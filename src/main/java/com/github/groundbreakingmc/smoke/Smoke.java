@@ -64,10 +64,6 @@ public final class Smoke extends JavaPlugin implements Listener {
                 && event.getClickedBlock().getType() == Material.BREWING_STAND;
     }
 
-    private boolean shisha(final Location location) {
-        return location.clone().subtract(0, 1, 0).getBlock().getType() == Material.BLACK_WOOL;
-    }
-
     private boolean wape(final Player player) {
         final ItemStack itemStack = player.getInventory().getItemInMainHand();
         final Material material = itemStack.getType();
@@ -83,6 +79,10 @@ public final class Smoke extends JavaPlugin implements Listener {
 
         event.setCancelled(true);
         this.process(event.getPlayer(), location, true);
+    }
+
+    private boolean shisha(final Location location) {
+        return location.clone().subtract(0, 1, 0).getBlock().getType() != Material.BLACK_WOOL;
     }
 
     private void process(final Player player, final Location location, final boolean shisha) {
