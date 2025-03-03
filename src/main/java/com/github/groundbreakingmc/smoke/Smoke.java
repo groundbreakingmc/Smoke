@@ -86,7 +86,7 @@ public final class Smoke extends JavaPlugin implements Listener {
     }
 
     private void process(final Player player, final Location location, final boolean shisha) {
-        if (player.hasPermission("smoke.use")) {
+        if (!player.hasPermission("smoke.use")) {
             return;
         }
 
