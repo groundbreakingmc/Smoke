@@ -33,7 +33,7 @@ public final class Smoke extends JavaPlugin implements Listener {
 
     public Smoke() {
         this.effects = ImmutableSet.of(
-                new PotionEffect(PotionEffectType.BLINDNESS, 60, 0),
+                new PotionEffect(PotionEffectType.DARKNESS, 60, 0),
                 new PotionEffect(PotionEffectType.SLOW, 60, 0)
         );
 
