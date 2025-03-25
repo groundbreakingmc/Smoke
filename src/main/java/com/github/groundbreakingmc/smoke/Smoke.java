@@ -49,6 +49,10 @@ public final class Smoke extends JavaPlugin implements Listener {
 
     @EventHandler
     public void onInteract(final PlayerInteractEvent event) {
+        if (!event.getAction().isRightClick()) {
+            return;
+        }
+
         final Player player = event.getPlayer();
         if (this.shisha(event)) {
             this.processShisha(event);
@@ -60,14 +64,18 @@ public final class Smoke extends JavaPlugin implements Listener {
     private boolean shisha(final PlayerInteractEvent event) {
         return !event.isCancelled()
                 && event.hasBlock()
-                && event.getAction() != Action.LEFT_CLICK_BLOCK
                 && event.getClickedBlock().getType() == Material.BREWING_STAND;
     }
 
     private boolean wape(final Player player) {
         final ItemStack itemStack = player.getInventory().getItemInMainHand();
         final Material material = itemStack.getType();
-        return material == Material.GOAT_HORN && !player.hasCooldown(material);
+        if (material != Material.GOAT_HORN || player.hasCooldown(material)) {
+            return false;
+        }
+
+        player.setCooldown(material, 140);
+        return true;
     }
 
     private void processShisha(final PlayerInteractEvent event) {
