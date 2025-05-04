@@ -58,6 +58,10 @@
             <id>sonatype</id>
             <url>https://oss.sonatype.org/content/groups/public/</url>
         </repository>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
     </repositories>
 
     <dependencies>
@@ -70,7 +74,7 @@
         <dependency>
             <groupId>com.github.groundbreakingmc</groupId>
             <artifactId>MyLib</artifactId>
-            <version>1.0</version>
+            <version>main-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
